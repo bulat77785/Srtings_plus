@@ -1,65 +1,29 @@
 #include <stdio.h>
-//#include "s21_string.h"
 #include <string.h>
+#include "s21_string.h"
 
-int s21_strncmp(const char *s1, const char *s2, size_t n);
-void strncmp_unit_test(const char* s1, const char* s2, size_t n);
+int  main() {
+    char s1[20] = "Hello world\0";
+    char s2[15] = "Hello world\n\0";
+    char s3[20] = "a\n\0";
+    char s4[20] = " \n\0";
+    char s5[6] = " \0";
+    char s6[4] = "\n\0";
+    char s7[2] = "\0";
+    char s8[4] = "aaa";
+    char s9[2] = "";
 
-int main (void) {
-    //char str1[16]="1234567890";
-    //char str2[16]="1234507890";
-    
-    strncmp_unit_test("aaa", "", 3);
-    strncmp_unit_test("aaa", "afa", 3);
-    strncmp_unit_test("aza", "aca", 3);
-    strncmp_unit_test("abc", "abz", 3);
-    strncmp_unit_test("abc", "abz", 2);
-    strncmp_unit_test("abc", "abz", 1);
-    strncmp_unit_test("abc", "abc", 10000);
-    strncmp_unit_test("abc", "a", 50);
-    strncmp_unit_test("a", "abc", 50);
-    strncmp_unit_test("a", "abc", 1);
-    
-   /*// Сравниваемые строки
-   
-    if (s21_strncmp(str1, str2, 6) == 0) {
-        printf("%4s == %4s, %5d == %d\n", str1, str2, strncmp(str1, str2, 6), strncmp(str1, str2, 6));
-        return 0;
-    } else if (s21_strncmp(str1, str2, 6) > 0) {
-    printf("%4s == %4s, %5d == %d\n", str1, str2, strncmp(str1, str2, 6), strncmp(str1, str2, 6));
-        return 1;
-    } else if (s21_strncmp(str1, str2, 6) < 0) {
-    printf("%4s == %4s, %5d == %d\n", str1, str2, strncmp(str1, str2, 6), strncmp(str1, str2, 6));
-        return -1;
-    }
-    
-   // Сравниваем первые пять символов двух строк
-   if (strncmp (str1, str2, 6)==0)
-      puts ("Первые 6 символов строк идентичны");
-   else
-      puts ("Первые 6 символов строк отличаются");
-    //printf("%d", strncmp(str1, str2, 6));*/
-   return 0;
-}
+    printf("%d = %d\n", s21_strncmp(s1, s2, 11), strncmp(s1, s2, 11));
+    printf("%d = %d\n", s21_strncmp(s1, s2, 12), strncmp(s1, s2, 12));
+    printf("%d = %d\n", s21_strncmp(s4, s5, 1), strncmp(s4, s5, 1));
+    printf("%d = %d\n", s21_strncmp(s4, s5, 2), strncmp(s4, s5, 2));
+    printf("%d = %d\n", s21_strncmp(s5, s7, 1), strncmp(s5, s7, 1));
+    printf("%d = %d\n", s21_strncmp(s5, s7, 2), strncmp(s5, s7, 2));
+    printf("%d = %d\n", s21_strncmp(s3, s4, 2), strncmp(s3, s4, 2));
+    printf("%d = %d\n", s21_strncmp(s3, s4, 3), strncmp(s3, s4, 3));
+    printf("%d = %d\n", s21_strncmp(s6, s7, 1), strncmp(s6, s7, 1));
+    printf("%d = %d\n", s21_strncmp(s6, s7, 2), strncmp(s6, s7, 2));
+    printf("%d = %d\n", s21_strncmp(s8, s9, 3), strncmp(s8, s9, 3));
 
-int s21_strncmp(const char *s1, const char *s2, size_t n) {
-    s1 = (char *)s1;
-    s2 = (char *)s2;
-
-    while (n--) {
-        if (*s1 == *s2) {
-            s1++;
-            s2++;
-        } else {
-            if (*s1 < *s2)
-                return -1;
-            else
-                return 1;
-        }
-    }
     return 0;
-}
-
-void strncmp_unit_test(const char* s1, const char* s2, size_t n) {
-    printf("%4s == %4s, %5d == %d\n", s1, s2, s21_strncmp(s1, s2, n), s21_strncmp(s1, s2, n));
 }
