@@ -5,7 +5,7 @@
 		- Скачиваем и устанавливаем образ Ubuntu 20.04 Server LTS с официального сайта https://www.releases.ubuntu.com/20.04
 
 		`Вывод команды cat /etc/issue для определения установленной версии Ubuntu`
-		![./Screenshots/part1_ubuntu_version.png](part1_ubuntu_version.png)
+		![ubuntu.png](Screenshots/ubuntu.png)
 
 ## Part 2. Создание пользователя
 ---
